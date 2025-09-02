@@ -8,8 +8,6 @@ import React, {
 import { ToastContainer, toast } from "react-toastify";
 import styled from "styled-components";
 
-// styled-components definitions would be here
-
 const PxToVw = () => {
   const [input, setInput] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -54,8 +52,8 @@ const PxToVw = () => {
     <Wrapper>
       <Title>Px To Vw</Title>
       <Caution>
-        <span>*</span>너비 750px 기준으로 환산한 값입니다. Enter 사용 시 쉽게
-        복사 가능합니다.
+        <span>*</span>가로 750px 기준으로 환산한 값입니다. <br />
+        'Enter' 사용 시 쉽게 복사 가능합니다. 소주점 4자리수까지 나타납니다.
       </Caution>
       <Container>
         <FlexBox>
