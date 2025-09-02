@@ -54,7 +54,8 @@ const PxToVw = () => {
     <Wrapper>
       <Title>Px To Vw</Title>
       <Caution>
-        <span>*</span>너비 750px 기준으로 환산한 값입니다.
+        <span>*</span>너비 750px 기준으로 환산한 값입니다. Enter 사용 시 쉽게
+        복사 가능합니다.
       </Caution>
       <Container>
         <FlexBox>
