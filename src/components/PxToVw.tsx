@@ -51,7 +51,7 @@ const PxToVw = () => {
   const calculatedVw = Math.floor((Number(input) / 750) * 100 * 10000) / 10000;
 
   return (
-    <>
+    <Wrapper>
       <Title>Px To Vw</Title>
       <Caution>
         <span>*</span>너비 750px 기준으로 환산한 값입니다.
@@ -74,9 +74,18 @@ const PxToVw = () => {
         </Vw>
         <ToastContainer />
       </Container>
-    </>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  max-width: 750px;
+  width: 100%;
+  background-color: #eee;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 4rem;
+`;
 
 const Title = styled.h2`
   font-weight: bold;
