@@ -18,8 +18,12 @@ const PxToVw = () => {
     }
   }, []);
 
+  const calculatedVw = Math.floor((Number(input) / 750) * 100 * 10000) / 10000;
+
   const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInput(e.target.value);
+    const value = e.target.value;
+    const numericValue = value.replace(/[^0-9.]/g, "");
+    setInput(numericValue);
   };
 
   const copyToClipboard = (value: string) => {
@@ -33,8 +37,7 @@ const PxToVw = () => {
 
   const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      const calculatedValue =
-        Math.floor((Number(input) / 750) * 100 * 10000) / 10000;
+      const calculatedValue = calculatedVw;
       copyToClipboard(`${calculatedValue}vw`);
       setInput("");
     }
@@ -45,8 +48,6 @@ const PxToVw = () => {
     copyToClipboard(value);
     setInput("");
   };
-
-  const calculatedVw = Math.floor((Number(input) / 750) * 100 * 10000) / 10000;
 
   return (
     <Wrapper>
