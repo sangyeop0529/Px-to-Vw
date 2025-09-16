@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import hljs from "highlight.js";
 import "highlight.js/styles/vs2015.css";
 import styled from "styled-components";
@@ -15,8 +15,12 @@ const CodeCopy = ({ id, title, type, code }: CodeCopyProps) => {
   const storageKey = `code-copy-${id}`;
   const [isOpen, setIsOpen] = useState(false);
 
+  const codeRef = useRef(null);
+
   useEffect(() => {
-    hljs.highlightAll();
+    if (isOpen && codeRef.current) {
+      hljs.highlightElement(codeRef.current);
+    }
   }, [isOpen]);
 
   useEffect(() => {
@@ -57,7 +61,9 @@ const CodeCopy = ({ id, title, type, code }: CodeCopyProps) => {
         </div>
         {isOpen && (
           <pre>
-            <code>{code}</code>
+            <code ref={codeRef} className={`language-${type}`}>
+              {code}
+            </code>
           </pre>
         )}
       </div>
