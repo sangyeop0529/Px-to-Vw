@@ -71,7 +71,15 @@ for (let index = 1; index <= $(".basic .swiper-mask").length; index++) {
     "5": {
       title: "기본 Swiper CSS",
       type: "CSS",
-      code: `.swiper-mask .swiper {
+      code: `/* 만약 position으로 띄울 경우 사용 */
+/* .swiper-mask .swiper {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  top: 30%;
+} */
+.swiper-mask .swiper {
   padding: 0 8vw;
 }
 .swiper-mask .swiper-pagination {

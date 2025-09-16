@@ -5,28 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      .flowBanner {
-        display: flex;
-        width: max-content;
-        animation: flow 10s linear infinite;
+      /* 만약 position으로 띄울 경우 사용 */
+      /* .swiper-mask .swiper {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        top: 30%;
+      } */
+      .swiper-mask .swiper {
+        padding: 0 8vw;
       }
-
-      .flowBanner li {
-        flex: 0 0 auto;
+      .swiper-mask .swiper-pagination {
+        margin-top: 8vw;
       }
-
-      .flowBanner img {
-        
-        max-width: clamp(810px, 216vw, 1620px);
+      .swiper-pagination-bullet {
+        background-color: #efe4e4;
       }
-
-      @keyframes flow {
-        from {
-          transform: translateX(0);
-        }
-        to {
-          transform: translateX(-50%);
-        }
+      .swiper-pagination-bullet-active {
+        background-color: #ba0c2f;
+      }
+      .swiper-mask .swiper-button-prev,
+      .swiper-mask .swiper-button-next {
+        width: 8vw;
+        height: 8vw;
+        top: 25%;
+      }
+      .swiper-mask .swiper-button-prev {
+        left: 8vw;
+      }
+      .swiper-mask .swiper-button-next {
+        right: 8vw;
       }
     </style>
   </head>
