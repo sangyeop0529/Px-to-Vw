@@ -43,29 +43,32 @@ export const codeExamples = {
       title: "",
       type: "JS",
       code: `// swiper 반복문 [S]
-let swiperObj1 = {};
-for (let index = 1; index <= $(".basic .swiper-mask").length; index++) {
-  swiperObj1[\`swiper\${index}\`] = new Swiper(
-    \`.basic .swiper\${index} .swiper\`,
+const swiperObj1 = {};
+const swiperMasks = document.querySelectorAll(".basic .swiper-mask");
+
+swiperMasks.forEach((mask, index) => {
+  const swiperIndex = index + 1;
+  swiperObj1[\`swiper\${swiperIndex}\`] = new Swiper(
+    \`.basic .swiper\${swiperIndex} .swiper\`,
     {
       observer: true,
       observeParents: true,
       slidesPerView: 1,
-      spaceBetween: parseInt($(window).width() * 0.0),
+      spaceBetween: Math.floor(window.innerWidth * 0.0),
 
       pagination: {
-        el: \`.basic .swiper\${index} .swiper-pagination\`,
+        el: \`.basic .swiper\${swiperIndex} .swiper-pagination\`,
       },
       navigation: {
-        nextEl: \`.basic .swiper\${index} .swiper-button-next\`,
-        prevEl: \`.basic .swiper\${index} .swiper-button-prev\`,
+        nextEl: \`.basic .swiper\${swiperIndex} .swiper-button-next\`,
+        prevEl: \`.basic .swiper\${swiperIndex} .swiper-button-prev\`,
       },
       scrollbar: {
-        el: \`.basic .swiper\${index} .swiper-scrollbar\`,
+        el: \`.basic .swiper\${swiperIndex} .swiper-scrollbar\`,
       },
     }
   );
-}
+});
 // swiper 반복문 [E]`,
     },
     "5": {
@@ -108,10 +111,13 @@ for (let index = 1; index <= $(".basic .swiper-mask").length; index++) {
       title: "Swiper Fade Effect",
       type: "JS",
       code: `// swiper 반복문 [S]
-let swiperObj1 = {};
-for (let index = 1; index <= $(".fade .swiper-mask").length; index++) {
-  swiperObj1[\`swiper\${index}\`] = new Swiper(
-    \`.fade .swiper\${index} .swiper\`,
+const swiperObj1 = {};
+const swiperMasks = document.querySelectorAll(".fade .swiper-mask");
+
+swiperMasks.forEach((mask, index) => {
+  const swiperIndex = index + 1;
+  swiperObj1[\`swiper\${swiperIndex}\`] = new Swiper(
+    \`.fade .swiper\${swiperIndex} .swiper\`,
     {
       observer: true,
       observeParents: true,
@@ -129,7 +135,7 @@ for (let index = 1; index <= $(".fade .swiper-mask").length; index++) {
       allowTouchMove: false,
     }
   );
-}
+});
 // swiper 반복문 [E]`,
     },
     "7": {

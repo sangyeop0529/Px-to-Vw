@@ -4,55 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-      /* 만약 position으로 띄울 경우 사용 */
-      /* .swiper-mask .swiper {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100%;
-        top: 30%;
-      } */
-      .swiper-mask .swiper {
-        padding: 0 8vw;
-      }
-      .swiper-mask .swiper-pagination {
-        margin-top: 8vw;
-      }
-      .swiper-pagination-bullet {
-        background-color: #efe4e4;
-      }
-      .swiper-pagination-bullet-active {
-        background-color: #ba0c2f;
-      }
-      .swiper-mask .swiper-button-prev,
-      .swiper-mask .swiper-button-next {
-        width: 8vw;
-        height: 8vw;
-        top: 25%;
-      }
-      .swiper-mask .swiper-button-prev {
-        left: 8vw;
-      }
-      .swiper-mask .swiper-button-next {
-        right: 8vw;
-      }
-    </style>
+    <style></style>
   </head>
   <body>
-    <div class="flowContainer">
-      <ul class="flowBanner">
-        <li><img src="./" alt="" /></li>
-        <li><img src="./" alt="" /></li>
-      </ul>
-    </div>
-
     <script>
       // swiper 반복문 [S]
-      let swiperObj1 = {};
-      for (let index = 1; index <= $(".fade .swiper-mask").length; index++) {
-        swiperObj1[`swiper${index}`] = new Swiper(
-          `.fade .swiper${index} .swiper`,
+      const swiperObj1 = {};
+      const swiperMasks = document.querySelectorAll(".fade .swiper-mask");
+
+      swiperMasks.forEach((mask, index) => {
+        const swiperIndex = index + 1;
+        swiperObj1[`swiper${swiperIndex}`] = new Swiper(
+          `.fade .swiper${swiperIndex} .swiper`,
           {
             observer: true,
             observeParents: true,
@@ -70,7 +33,7 @@
             allowTouchMove: false,
           }
         );
-      }
+      });
       // swiper 반복문 [E]
     </script>
   </body>
