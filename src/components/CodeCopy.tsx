@@ -13,7 +13,7 @@ type CodeCopyProps = {
 
 const CodeCopy = ({ id, title, type, code }: CodeCopyProps) => {
   const storageKey = `code-copy-${id}`;
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     hljs.highlightAll();
