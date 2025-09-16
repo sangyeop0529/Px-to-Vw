@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
-const TitleSec = () => {
-  return <Title>Px To Vw</Title>;
+type TitleProps = {
+  title: string;
+};
+
+const TitleSec = ({ title }: TitleProps) => {
+  return <Title>{title}</Title>;
 };
 
 export default TitleSec;
