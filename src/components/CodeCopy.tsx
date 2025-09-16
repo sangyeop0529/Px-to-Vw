@@ -45,7 +45,7 @@ const CodeCopy = ({ id, title, type, code }: CodeCopyProps) => {
 
   return (
     <Wrapper>
-      <Title>{title}</Title>
+      {title && <Title>{title}</Title>}
 
       <div className="code-block">
         <div className="code-header">
@@ -67,13 +67,13 @@ const CodeCopy = ({ id, title, type, code }: CodeCopyProps) => {
 };
 
 export default CodeCopy;
-
 const Wrapper = styled.div`
-  margin-bottom: 1.5rem;
+  margin-top: 0.5rem;
 `;
 const Title = styled.h2`
   font-weight: 600;
   font-size: 20px;
+  margin-top: 1rem;
   margin-bottom: 1rem;
 `;
 const HideBtn = styled.button`

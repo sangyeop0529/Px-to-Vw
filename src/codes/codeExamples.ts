@@ -40,7 +40,7 @@ export const codeExamples = {
 </div>`,
     },
     "4": {
-      title: "기본 Swiper JS",
+      title: "",
       type: "JS",
       code: `// swiper 반복문 [S]
 let swiperObj1 = {};
@@ -97,7 +97,7 @@ for (let index = 1; index <= $(".basic .swiper-mask").length; index++) {
 }`,
     },
     "6": {
-      title: "Fade Effect",
+      title: "Swiper Fade Effect",
       type: "JS",
       code: `// swiper 반복문 [S]
 let swiperObj1 = {};
@@ -202,6 +202,95 @@ for (let index = 1; index <= $(".fade .swiper-mask").length; index++) {
   }
 }`,
     },
-    // END
+    "12": {
+      title: "특정 시간 예약 걸기",
+      type: "HTML",
+      code: `<div data-time="202512250000" class="schedule">
+  <div class="schedule-item open">
+    <img src="https://placehold.co/750x600?text=Start" alt="" />
+  </div>
+  <div class="schedule-item reserved delete">
+    <img src="https://placehold.co/750x600/000/fff/?text=Done" alt="" />
+  </div>
+</div>`,
+    },
+    "13": {
+      title: "",
+      type: "JS",
+      code: `// ! 예약 시간 걸기 [S]
+const getFormattedDateNum = () => {
+  const now = new Date();
+  const year = String(now.getFullYear());
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  const hours = String(now.getHours()).padStart(2, "0");
+  const minutes = String(now.getMinutes()).padStart(2, "0");
+  const seconds = String(now.getSeconds()).padStart(2, "0"); // 초까지 포함
+  return Number(\`\${year}\${month}\${day}\${hours}\${minutes}\${seconds}\`);
+};
+
+// 페이지 로드 시점 기준 시간
+const initialTime = getFormattedDateNum();
+
+// 스케줄 요소 캐싱
+const scheduleEls = document.querySelectorAll(".schedule");
+
+const checkSchedules = () => {
+  const currentTime = getFormattedDateNum(); // YYYYMMDDHHmmss
+  let allDone = true;
+
+  scheduleEls.forEach((el) => {
+    let targetTime = el.dataset.time;
+
+    // 데이터 값이 없으면 +3초
+    if (!targetTime) {
+      targetTime = initialTime + 3;
+    }
+    // 데이터 값이 분까지만 있으면 "00초" 붙임
+    else if (targetTime.length === 12) {
+      targetTime = targetTime + "00"; // YYYYMMDDHHmm00
+    }
+
+    targetTime = Number(targetTime);
+
+    // console.log(\`데이터값 : \${targetTime}\`);
+
+    if (!targetTime || el.classList.contains("done")) return;
+
+    if (currentTime >= targetTime) {
+      el.querySelectorAll(".schedule-item").forEach((child) => {
+        const isReserved = child.classList.contains("reserved");
+        child.classList.toggle("open", isReserved);
+        child.classList.toggle("delete", !isReserved);
+      });
+      el.classList.add("done");
+    } else {
+      allDone = false;
+    }
+  });
+
+  if (allDone) {
+    // console.log("모든 스케쥴이 완료되었습니다.");
+    clearInterval(intervalId);
+  }
+};
+
+const intervalId = setInterval(checkSchedules, 1000);
+checkSchedules();
+// ! 예약 시간 걸기 [E]`,
+    },
+    "14": {
+      title: "",
+      type: "CSS",
+      code: `.open {display: block;}
+.delete {display: none;}`,
+    },
+    /* 기본 형식
+    "": {
+      title: "",
+      type: "",
+      code: ``,
+    },
+    */
   },
 } as const;
