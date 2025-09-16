@@ -1,12 +1,24 @@
-import Next from "./components/Next";
+import CodeCopy from "./components/CodeCopy";
 import PxToVw from "./components/PxToVw";
 import styled from "styled-components";
+import { codeExamples } from "./codes/codeExamples";
+
+const allExamples = [...Object.values(codeExamples.Sample)];
 
 function App() {
   return (
     <Container>
       <PxToVw />
-      <Next />
+
+      {allExamples.map((example, idx) => (
+        <CodeCopy
+          key={idx}
+          id={idx}
+          title={example.title}
+          type={example.type}
+          code={example.code}
+        />
+      ))}
     </Container>
   );
 }
@@ -14,10 +26,9 @@ function App() {
 export default App;
 
 const Container = styled.div`
-  max-width: 750px;
+  max-width: 1000px;
   width: 100%;
   background-color: #eee;
-  height: 100vh;
   margin: 0 auto;
   padding: 4rem;
 `;
