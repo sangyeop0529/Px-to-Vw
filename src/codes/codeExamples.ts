@@ -105,6 +105,15 @@ swiperMasks.forEach((mask, index) => {
 }
 .swiper-mask .swiper-button-next {
   right: 8vw;
+}
+.swiper-mask .swiper-scrollbar {
+  width: 90%;
+  height: 0.8vw;
+  background-color: #efe4e4;
+  margin-top: 3vw;
+}
+.swiper-mask .swiper-scrollbar-drag {
+  background-color: #ba0c2f;
 }`,
     },
     "6": {
