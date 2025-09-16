@@ -4,30 +4,32 @@ export const codeExamples = {
       title: "기본형",
       type: "HTML",
       code: `<div class="top01">
-  <img src="./images/top01.jpg" alt="" />
+  <img src="./images/top01.jpg" alt="입력해주세요." />
 </div>`,
     },
     "2": {
       title: "버튼형",
       type: "HTML",
-      code: `<div class="sec03">
-  <img src="./images/sec03_1.jpg" alt="" />
-  <img src="./images/sec03_2.jpg" class="kioskDel" />
+      code: `<div class="sec01">
+  <img src="./images/sec01_1.jpg" alt="입력해주세요" />
+  <img src="./images/sec01_2.jpg" class="kioskDel" />
   <a href="#" id="link1" data-order="0" class="link-btn kioskDel">
-    <img src="./images/sec03_3.jpg" />
+    <img src="./images/sec01_3.jpg" />
   </a>
-  <img src="./images/sec03_4.jpg" />
+  <img src="./images/sec01_4.jpg" />
 </div>`,
     },
     "3": {
       title: "Swiper 기본형",
       type: "HTML",
-      code: `<div class="tab02 tabBox">
-  <img src="./images/tab1/tab01_2.jpg" alt="" />
+      code: `<div class="tab01 basic">
+  <img src="./images/tab1/tab01_1.jpg" alt="입력해주세요" />
   <div class="swiper-mask swiper1">
     <div class="swiper">
       <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="./images/tab2/slide/1/1.png" /></div>
+        <div class="swiper-slide">
+          <img src="./images/tab1/slide/1/1.png" />
+        </div>
       </div>
       <div class="swiper-pagination"></div>
       <div class="swiper-button-prev"></div>
@@ -42,9 +44,9 @@ export const codeExamples = {
       type: "JS",
       code: `// swiper 반복문 [S]
 let swiperObj1 = {};
-for (let index = 1; index <= $(".tabBox .swiper-mask").length; index++) {
+for (let index = 1; index <= $(".basic .swiper-mask").length; index++) {
   swiperObj1[\`swiper\${index}\`] = new Swiper(
-    \`.tabBox .swiper\${index} .swiper\`,
+    \`.basic .swiper\${index} .swiper\`,
     {
       observer: true,
       observeParents: true,
@@ -52,14 +54,14 @@ for (let index = 1; index <= $(".tabBox .swiper-mask").length; index++) {
       spaceBetween: parseInt($(window).width() * 0.0),
 
       pagination: {
-        el: \`.tabBox .swiper\${index} .swiper-pagination\`,
+        el: \`.basic .swiper\${index} .swiper-pagination\`,
       },
       navigation: {
-        nextEl: \`.tabBox .swiper\${index} .swiper-button-next\`,
-        prevEl: \`.tabBox .swiper\${index} .swiper-button-prev\`,
+        nextEl: \`.basic .swiper\${index} .swiper-button-next\`,
+        prevEl: \`.basic .swiper\${index} .swiper-button-prev\`,
       },
       scrollbar: {
-        el: \`.tabBox .swiper\${index} .swiper-scrollbar\`,
+        el: \`.basic .swiper\${index} .swiper-scrollbar\`,
       },
     }
   );
@@ -121,6 +123,84 @@ for (let index = 1; index <= $(".fade .swiper-mask").length; index++) {
   );
 }
 // swiper 반복문 [E]`,
+    },
+    "7": {
+      title: "토글 박스형",
+      type: "HTML",
+      code: `<div class="sec01">
+  <div class="toggle-box">
+    <div class="toggle-box__btns">
+      <img src="./images/toggle_on.jpg" />
+      <img src="./images/toggle_off.jpg" />
+    </div>
+    <div class="toggle-box__con">
+      <img src="./images/sec01.jpg" />
+    </div>
+  </div>
+</div>`,
+    },
+    "8": {
+      title: "링크연결형",
+      type: "HTML",
+      code: `<div class="sec01 img-box">
+  <img src="./images/sec01.jpg" alt="입력해주세요" />
+  <span class="goto-link kioskDel"
+    ><a href="tel:02-123-5678">입력해주세요</a></span
+  >
+</div>`,
+    },
+    "9": {
+      title: "",
+      type: "CSS",
+      code: `.goto-link a {
+  position: absolute;
+  width: 10%;
+  height: 10%;
+  left: 0%;
+  bottom: 0;
+  text-indent: -9999px;
+  background-color: rgba(0, 0, 255, 0.7);
+}
+.goto-link:nth-of-type(1) a {
+  bottom: 10%;
+}`,
+    },
+    "10": {
+      title: "흐르는 배너",
+      type: "HTML",
+      code: `<div class="flowContainer">
+  <ul class="flowBanner">
+    <li><img src="./" alt="" /></li>
+    <li><img src="./" alt="" /></li>
+  </ul>
+</div>`,
+    },
+    "11": {
+      title: "",
+      type: "CSS",
+      code: `.flowBanner {
+  display: flex;
+  width: max-content;
+  animation: flow 10s linear infinite;
+}
+
+.flowBanner li {
+  flex: 0 0 auto;
+}
+
+.flowBanner img {
+  /* 이미지의 가로값 계산 */
+  max-width: clamp(810px, 216vw, 1620px);
+}
+
+@keyframes flow {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}`,
     },
     // END
   },

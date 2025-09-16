@@ -51,8 +51,8 @@ const CodeCopy = ({ id, title, type, code }: CodeCopyProps) => {
         <div className="code-header">
           <h3>{type}</h3>
           <div className="btn-group">
-            <HideBtn onClick={onHideBtn}>{isOpen ? "Hide" : "Show"}</HideBtn>
             <CopyBtn onClick={onClickBtn}>COPY</CopyBtn>
+            <HideBtn onClick={onHideBtn}>{isOpen ? "Hide" : "Show"}</HideBtn>
           </div>
         </div>
         {isOpen && (

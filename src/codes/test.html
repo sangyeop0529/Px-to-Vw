@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .flowBanner {
+        display: flex;
+        width: max-content;
+        animation: flow 10s linear infinite;
+      }
+
+      .flowBanner li {
+        flex: 0 0 auto;
+      }
+
+      .flowBanner img {
+        
+        max-width: clamp(810px, 216vw, 1620px);
+      }
+
+      @keyframes flow {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flowContainer">
+      <ul class="flowBanner">
+        <li><img src="./" alt="" /></li>
+        <li><img src="./" alt="" /></li>
+      </ul>
+    </div>
+
+    <script>
+      // swiper 반복문 [S]
+      let swiperObj1 = {};
+      for (let index = 1; index <= $(".fade .swiper-mask").length; index++) {
+        swiperObj1[`swiper${index}`] = new Swiper(
+          `.fade .swiper${index} .swiper`,
+          {
+            observer: true,
+            observeParents: true,
+            slidesPerView: 1,
+            loop: true,
+            effect: "fade",
+            fadeEffect: {
+              crossFade: true,
+            },
+            speed: 2000,
+            autoplay: {
+              delay: 1500,
+              disableOnInteraction: false,
+            },
+            allowTouchMove: false,
+          }
+        );
+      }
+      // swiper 반복문 [E]
+    </script>
+  </body>
+</html>
