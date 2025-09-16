@@ -2,14 +2,16 @@ import CodeCopy from "./components/CodeCopy";
 import PxToVw from "./components/PxToVw";
 import styled from "styled-components";
 import { codeExamples } from "./codes/codeExamples";
+import TitleSec from "./components/Title";
 
 const allExamples = [...Object.values(codeExamples.Sample)];
 
 function App() {
   return (
     <Container>
+      <TitleSec title={"Px to Vw"} />
       <PxToVw />
-
+      <TitleSec title={"Code Sample"} />
       {allExamples.map((example, idx) => (
         <CodeCopy
           key={idx}

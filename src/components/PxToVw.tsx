@@ -7,7 +7,6 @@ import React, {
 } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import styled from "styled-components";
-import TitleSec from "./Title";
 
 const PxToVw = () => {
   const [input, setInput] = useState<number | "">("");
@@ -51,7 +50,6 @@ const PxToVw = () => {
 
   return (
     <Wrapper>
-      <TitleSec title={"Px to Vw"} />
       <Caution>
         <span>*</span>가로 750px 기준으로 환산한 값입니다. <br />
         'Enter' 사용 시 쉽게 복사 가능합니다. 소수점 4자리까지 나타납니다.
@@ -81,12 +79,7 @@ const PxToVw = () => {
 };
 
 const Wrapper = styled.div`
-  margin-bottom: 1.5rem;
-`;
-const Title = styled.h2`
-  font-weight: bold;
-  font-size: 40px;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 `;
 const Caution = styled.p`
   display: flex;

@@ -3,7 +3,6 @@ import hljs from "highlight.js";
 import "highlight.js/styles/vs2015.css";
 import styled from "styled-components";
 import { ToastContainer, toast } from "react-toastify";
-import TitleSec from "./Title";
 
 type CodeCopyProps = {
   id: number;
@@ -46,7 +45,6 @@ const CodeCopy = ({ id, title, type, code }: CodeCopyProps) => {
 
   return (
     <Wrapper>
-      <TitleSec title={"Code Sample"} />
       {title && <Title>{title}</Title>}
 
       <div className="code-block">
