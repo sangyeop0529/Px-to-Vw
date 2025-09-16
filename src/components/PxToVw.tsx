@@ -111,10 +111,12 @@ const Vw = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 1rem;
+  padding: 0.875rem 1rem;
   background-color: #4caf50;
+  color: #fff;
   border: none;
   height: 100%;
+  border-radius: 4px;
 `;
 
 export default PxToVw;
