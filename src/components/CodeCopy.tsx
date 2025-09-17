@@ -34,7 +34,7 @@ const CodeCopy = ({ id, title, type, code }: CodeCopyProps) => {
     localStorage.setItem(storageKey, String(isOpen));
   }, [isOpen, storageKey]);
 
-  const onHideBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const onHideBtn = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
     setIsOpen((prev) => !prev);
   };
