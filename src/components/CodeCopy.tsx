@@ -39,7 +39,8 @@ const CodeCopy = ({ id, title, type, code }: CodeCopyProps) => {
     setIsOpen((prev) => !prev);
   };
 
-  const onClickBtn = async () => {
+  const onClickBtn = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
     if (code && code.trim() !== "") {
       try {
         await navigator.clipboard.writeText(code);
