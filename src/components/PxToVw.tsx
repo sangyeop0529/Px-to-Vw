@@ -24,10 +24,15 @@ const PxToVw = () => {
     setInput(value === "" ? "" : Number(value));
   };
 
-  const copyToClipboard = (value?: string) => {
-    if (value) {
-      navigator.clipboard.writeText(value);
-      toast(`클립보드에 복사됨: ${value}`);
+  const copyToClipboard = async (value?: string) => {
+    if (value && value.trim() !== "" && value !== "숫자를 입력하세요") {
+      try {
+        await navigator.clipboard.writeText(value);
+        toast(`클립보드에 복사됨: ${value}`);
+      } catch (err) {
+        toast.error("클립보드 복사 실패!");
+        console.error(err);
+      }
     } else {
       toast.error("복사할 내용이 없습니다!");
     }
@@ -51,8 +56,8 @@ const PxToVw = () => {
   return (
     <Wrapper>
       <Caution>
-        <span>*</span>가로 750px 기준으로 환산한 값입니다. <br />
-        'Enter' 사용 시 쉽게 복사 가능합니다. 소수점 4자리까지 나타납니다.
+        <span>*</span>가로 750px 기준으로 환산한 값입니다. 'Enter' 사용 시 쉽게
+        복사 가능합니다. 소수점 4자리까지 나타납니다.
       </Caution>
       <Container>
         <FlexBox>
@@ -66,7 +71,7 @@ const PxToVw = () => {
           />
           px
         </FlexBox>
-        <span> to </span>
+        <span> ➡️ </span>
         <Vw onClick={onClickButton}>
           {isNaN(calculatedVw)
             ? "숫자를 입력하세요"
@@ -84,12 +89,13 @@ const Wrapper = styled.div`
 const Caution = styled.p`
   display: flex;
   color: #818181;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.25;
 `;
 const Container = styled.div`
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
   height: 1.5rem;
 `;
 const FlexBox = styled.div`

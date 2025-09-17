@@ -34,14 +34,20 @@ const CodeCopy = ({ id, title, type, code }: CodeCopyProps) => {
     localStorage.setItem(storageKey, String(isOpen));
   }, [isOpen, storageKey]);
 
-  const onHideBtn = () => {
+  const onHideBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
     setIsOpen((prev) => !prev);
   };
 
-  const onClickBtn = () => {
-    if (code) {
-      navigator.clipboard.writeText(code);
-      toast(`클립보드에 복사됨`);
+  const onClickBtn = async () => {
+    if (code && code.trim() !== "") {
+      try {
+        await navigator.clipboard.writeText(code);
+        toast(`클립보드에 복사됨`);
+      } catch (err) {
+        toast.error("클립보드 복사 실패!");
+        console.error(err);
+      }
     } else {
       toast.error("복사할 내용이 없습니다!");
     }
@@ -52,7 +58,7 @@ const CodeCopy = ({ id, title, type, code }: CodeCopyProps) => {
       {title && <Title>{title}</Title>}
 
       <div className="code-block">
-        <div className="code-header">
+        <div onClick={onHideBtn} className="code-header">
           <h3>{type}</h3>
           <div className="btn-group">
             <CopyBtn onClick={onClickBtn}>COPY</CopyBtn>
