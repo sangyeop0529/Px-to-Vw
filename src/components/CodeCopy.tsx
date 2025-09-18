@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { ToastContainer, toast } from "react-toastify";
 
 type CodeCopyProps = {
-  id: number;
+  id: string;
   title: string;
   type: string;
   code: string;
@@ -62,8 +62,8 @@ const CodeCopy = ({ id, title, type, code }: CodeCopyProps) => {
         <div onClick={onHideBtn} className="code-header">
           <h3>{type}</h3>
           <div className="btn-group">
-            <CopyBtn onClick={onClickBtn}>COPY</CopyBtn>
             <HideBtn onClick={onHideBtn}>{isOpen ? "Hide" : "Show"}</HideBtn>
+            <CopyBtn onClick={onClickBtn}>COPY</CopyBtn>
           </div>
         </div>
         {isOpen && (

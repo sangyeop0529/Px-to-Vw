@@ -1,34 +1,94 @@
 export const codeExamples = {
-  Sample: {
-    "1": {
-      title: "기본형",
-      type: "HTML",
-      code: `<div class="top01">
-  <img src="./images/top01.jpg" alt="입력해주세요." />
+  Sample: [
+    [
+      {
+        id: "super-week-1",
+        title: "노르디스크 수퍼위크 (기간한정)",
+        type: "HTML",
+        code: `<div class="img-box">
+  <img src="./images/top_img.jpg" alt="노르디스크 수퍼위크" />
+  <div class="top-banner-swiper">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="./images/slide/top/1.png" />
+        </div>
+        <div class="swiper-slide">
+          <img src="./images/slide/top/2.png" />
+        </div>
+        <div class="swiper-slide">
+          <img src="./images/slide/top/3.png" />
+        </div>
+        <div class="swiper-slide">
+          <img src="./images/slide/top/1.png" />
+        </div>
+        <div class="swiper-slide">
+          <img src="./images/slide/top/2.png" />
+        </div>
+        <div class="swiper-slide">
+          <img src="./images/slide/top/3.png" />
+        </div>
+      </div>
+    </div>
+  </div>
 </div>`,
-    },
-    "2": {
-      title: "버튼형",
-      type: "HTML",
-      code: `<div class="sec01">
-  <img src="./images/sec01_1.jpg" alt="입력해주세요" />
-  <img src="./images/sec01_2.jpg" class="kioskDel" />
-  <a href="#" id="link1" data-order="0" class="link-btn kioskDel">
-    <img src="./images/sec01_3.jpg" />
+      },
+      {
+        id: "super-week-2",
+        title: "",
+        type: "JS",
+        code: `const collectionSwiper = new Swiper(".top-banner-swiper .swiper", {
+  observer: true,
+  observeParents: true,
+  speed: 1500,
+  loop: true,
+  autoplay: {
+    delay: 1000,
+    disableOnInteraction: false,
+  },
+  spaceBetween: parseInt($(window).width() * 0),
+  centeredSlides: true,
+  slidesPerView: 1.5,
+});`,
+      },
+    ],
+    [
+      {
+        id: "basic-1",
+        title: "기본형",
+        type: "HTML",
+        code: `<div class="">
+  <img src="./images/" alt="입력해주세요." />
+</div>`,
+      },
+    ],
+    [
+      {
+        id: "button-1",
+        title: "버튼형",
+        type: "HTML",
+        code: `<div class="sec01">
+  <img src="./images/" alt="입력해주세요" />
+  <img src="./images/.jpg" class="kioskDel" />
+  <a href="#" id="link0" data-order="0" class="link-btn kioskDel">
+    <img src="./images/" />
   </a>
-  <img src="./images/sec01_4.jpg" />
+  <img src="./images/" />
 </div>`,
-    },
-    "3": {
-      title: "Swiper 기본형",
-      type: "HTML",
-      code: `<div class="tab01 basic">
-  <img src="./images/tab1/tab01_1.jpg" alt="입력해주세요" />
+      },
+    ],
+    [
+      {
+        id: "swiper-basic-1",
+        title: "Swiper 기본형",
+        type: "HTML",
+        code: `<div class="basic">
+  <img src="./images/" alt="입력해주세요" />
   <div class="swiper-mask swiper1">
     <div class="swiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <img src="./images/tab1/slide/1/1.png" />
+          <img src="./images/" />
         </div>
       </div>
       <div class="swiper-pagination"></div>
@@ -38,11 +98,12 @@ export const codeExamples = {
     </div>
   </div>
 </div>`,
-    },
-    "4": {
-      title: "",
-      type: "JS",
-      code: `// swiper 반복문 [S]
+      },
+      {
+        id: "swiper-basic-2",
+        title: "",
+        type: "JS",
+        code: `// swiper 반복문 [S]
 const swiperObj1 = {};
 const swiperMasks = document.querySelectorAll(".basic .swiper-mask");
 
@@ -70,11 +131,14 @@ swiperMasks.forEach((mask, index) => {
   );
 });
 // swiper 반복문 [E]`,
-    },
-    "5": {
-      title: "기본 Swiper CSS",
-      type: "CSS",
-      code: `/* 만약 position으로 띄울 경우 사용 */
+      },
+    ],
+    [
+      {
+        id: "swiper-basic-css-1",
+        title: "기본 Swiper CSS",
+        type: "CSS",
+        code: `/* 만약 position으로 띄울 경우 사용 */
 /* .swiper-mask .swiper {
   position: absolute;
   left: 50%;
@@ -115,11 +179,14 @@ swiperMasks.forEach((mask, index) => {
 .swiper-mask .swiper-scrollbar-drag {
   background-color: #ba0c2f;
 }`,
-    },
-    "6": {
-      title: "Swiper Fade Effect",
-      type: "JS",
-      code: `// swiper 반복문 [S]
+      },
+    ],
+    [
+      {
+        id: "swiper-fade-effect-1",
+        title: "Swiper Fade Effect",
+        type: "JS",
+        code: `// swiper 반복문 [S]
 const swiperObj1 = {};
 const swiperMasks = document.querySelectorAll(".fade .swiper-mask");
 
@@ -146,36 +213,43 @@ swiperMasks.forEach((mask, index) => {
   );
 });
 // swiper 반복문 [E]`,
-    },
-    "7": {
-      title: "토글 박스형",
-      type: "HTML",
-      code: `<div class="sec01">
+      },
+    ],
+    [
+      {
+        id: "toggle-box-1",
+        title: "토글 박스형",
+        type: "HTML",
+        code: `<div class="">
   <div class="toggle-box">
     <div class="toggle-box__btns">
       <img src="./images/toggle_on.jpg" />
       <img src="./images/toggle_off.jpg" />
     </div>
     <div class="toggle-box__con">
-      <img src="./images/sec01.jpg" />
+      <img src="./images/toggle_content.jpg" />
     </div>
   </div>
 </div>`,
-    },
-    "8": {
-      title: "링크연결형",
-      type: "HTML",
-      code: `<div class="sec01 img-box">
-  <img src="./images/sec01.jpg" alt="입력해주세요" />
+      },
+    ],
+    [
+      {
+        id: "link-connect-1",
+        title: "링크연결형",
+        type: "HTML",
+        code: `<div class="img-box">
+  <img src="./images/" alt="입력해주세요" />
   <span class="goto-link kioskDel">
     <a href="tel:02-123-5678">입력해주세요</a>
   </span>
 </div>`,
-    },
-    "9": {
-      title: "",
-      type: "CSS",
-      code: `.goto-link a {
+      },
+      {
+        id: "link-connect-2",
+        title: "",
+        type: "CSS",
+        code: `.goto-link a {
   position: absolute;
   width: 10%;
   height: 10%;
@@ -187,50 +261,34 @@ swiperMasks.forEach((mask, index) => {
 .goto-link:nth-of-type(1) a {
   bottom: 10%;
 }`,
-    },
-    "10": {
-      title: "흐르는 배너(수정 필요)",
-      type: "HTML",
-      code: `<div class="flowContainer">
-  <ul class="flowBanner">
-    <!-- 동일 이미지 2개 이상 사용해야 연속된 애니메이션 효과 -->
-    <li><img src="./" alt="" /></li>
-    <li><img src="./" alt="" /></li>
-  </ul>
-</div>`,
-    },
-    "11": {
-      title: "",
-      type: "CSS",
-      code: `.flowContainer {
-  position: relative;
-}
-.flowBanner {
-  display: flex;
-  width: max-content;
-  animation: flowR 10s linear infinite;
-  /* gap: 20px; */
-}
-.flowBanner li {
-  flex: 0 0 auto;
-}
-.flowBanner img {
-  /* 이미지의 가로값 계산 */
-  max-width: clamp(810px, 216vw, 1620px);
-}
-@keyframes flowR {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-/* @keyframes flowL {
-  from { transform: translateX(-50%); }
-  to { transform: translateX(0%); }
-} */`,
-    },
-    "12": {
-      title: "특정 시간 예약 걸기",
-      type: "HTML",
-      code: `<div data-time="202512250000" class="schedule">
+      },
+    ],
+    [
+      {
+        id: "flow-banner-1",
+        title: "흐르는 배너(작업중)",
+        type: "HTML",
+        code: ``,
+      },
+      {
+        id: "flow-banner-2",
+        title: "",
+        type: "CSS",
+        code: ``,
+      },
+      {
+        id: "flow-banner-3",
+        title: "",
+        type: "JS",
+        code: ``,
+      },
+    ],
+    [
+      {
+        id: "reserved-time-1",
+        title: "특정 시간 예약 걸기",
+        type: "HTML",
+        code: `<div data-time="202512250000" class="schedule">
   <div class="schedule-item open">
     <img src="https://placehold.co/750x600?text=Start" alt="" />
   </div>
@@ -238,11 +296,12 @@ swiperMasks.forEach((mask, index) => {
     <img src="https://placehold.co/750x600/000/fff/?text=Done" alt="" />
   </div>
 </div>`,
-    },
-    "13": {
-      title: "",
-      type: "JS",
-      code: `// ! 예약 시간 걸기 [S]
+      },
+      {
+        id: "reserved-time-2",
+        title: "",
+        type: "JS",
+        code: `// ! 예약 시간 걸기 [S]
 const getFormattedDateNum = () => {
   const now = new Date();
   const year = String(now.getFullYear());
@@ -303,17 +362,21 @@ const checkSchedules = () => {
 const intervalId = setInterval(checkSchedules, 1000);
 checkSchedules();
 // ! 예약 시간 걸기 [E]`,
-    },
-    "14": {
-      title: "",
-      type: "CSS",
-      code: `.open {display: block;}
+      },
+      {
+        id: "reserved-time-3",
+        title: "",
+        type: "CSS",
+        code: `.open {display: block;}
 .delete {display: none;}`,
-    },
-    "15": {
-      title: "Swiper Pagination Custom (테스트 예정)",
-      type: "JS",
-      code: `pagination: {
+      },
+    ],
+    [
+      {
+        id: "pagination-custom-1",
+        title: "Swiper Pagination Custom (테스트 필요)",
+        type: "JS",
+        code: `pagination: {
   el: \`.basic .swiper\${index} .swiper-pagination\`,
   type: "fraction",
   formatFractionCurrent: function (number) {
@@ -330,11 +393,12 @@ checkSchedules();
 </div>\`;
   },
 },`,
-    },
-    "16": {
-      title: "",
-      type: "CSS",
-      code: `.swiper-pagination-current {
+      },
+      {
+        id: "pagination-custom-2",
+        title: "",
+        type: "CSS",
+        code: `.swiper-pagination-current {
   font-size: clamp(13px, 3.4666vw, 26px);
   font-weight: 600;
 }
@@ -346,62 +410,17 @@ checkSchedules();
   font-size: clamp(10px, 2.6666vw, 20px);
   font-weight: 500;
 }`,
-    },
-    "17": {
-      title: "노르디스크 수퍼위크",
-      type: "HTML",
-      code: `<div class="img-box">
-<img src="./images/top_img.jpg" alt="노르디스크 수퍼위크" />
-<!-- auto-swiper -->
-<div class="top-banner-swiper">
-  <div class="swiper">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        <img src="./images/slide/top/1.png" />
-      </div>
-      <div class="swiper-slide">
-        <img src="./images/slide/top/2.png" />
-      </div>
-      <div class="swiper-slide">
-        <img src="./images/slide/top/3.png" />
-      </div>
-      <div class="swiper-slide">
-        <img src="./images/slide/top/1.png" />
-      </div>
-      <div class="swiper-slide">
-        <img src="./images/slide/top/2.png" />
-      </div>
-      <div class="swiper-slide">
-        <img src="./images/slide/top/3.png" />
-      </div>
-    </div>
-  </div>
-</div>
-</div>`,
-    },
-    "18": {
-      title: "",
-      type: "JS",
-      code: `const collectionSwiper = new Swiper(".top-banner-swiper .swiper", {
-  observer: true,
-  observeParents: true,
-  speed: 1500,
-  loop: true,
-  autoplay: {
-    delay: 1000,
-    disableOnInteraction: false,
-  },
-  spaceBetween: parseInt($(window).width() * 0),
-  centeredSlides: true,
-  slidesPerView: 1.5,
-});`,
-    },
-    /* 기본 형식
-    "": {
-      title: "",
-      type: "",
-      code: ``,
-    },
+      },
+    ],
+    /*
+    [
+      {
+        id: "",
+        title: "",
+        type: "",
+        code: ``,
+      },
+    ],
     */
-  },
+  ],
 } as const;

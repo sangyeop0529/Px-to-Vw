@@ -5,29 +5,34 @@ import { codeExamples } from "./codes/codeExamples";
 import TitleSec from "./components/Title";
 import MoveToLink from "./components/MoveToLink";
 
-const allExamples = [...Object.values(codeExamples.Sample)];
+const allExamples = codeExamples.Sample;
 
 function App() {
   return (
     <Container>
       <TitleSec title={"링크연결"} />
       <MoveToLink />
+
       <TitleSec title={"Px to Vw"} />
       <PxToVw />
+
       <TitleSec title={"Code Sample"} />
-      {allExamples.map((example, idx) => (
-        <CodeCopy
-          key={idx}
-          id={idx}
-          title={example.title}
-          type={example.type}
-          code={example.code}
-        />
+      {allExamples.map((group, groupIdx) => (
+        <div key={groupIdx} className="example-group">
+          {group.map((example) => (
+            <CodeCopy
+              key={example.id}
+              id={example.id}
+              title={example.title}
+              type={example.type}
+              code={example.code}
+            />
+          ))}
+        </div>
       ))}
     </Container>
   );
 }
-
 export default App;
 
 const Container = styled.div`
