@@ -167,9 +167,9 @@ swiperMasks.forEach((mask, index) => {
       type: "HTML",
       code: `<div class="sec01 img-box">
   <img src="./images/sec01.jpg" alt="입력해주세요" />
-  <span class="goto-link kioskDel"
-    ><a href="tel:02-123-5678">입력해주세요</a></span
-  >
+  <span class="goto-link kioskDel">
+    <a href="tel:02-123-5678">입력해주세요</a>
+  </span>
 </div>`,
     },
     "9": {
@@ -189,10 +189,11 @@ swiperMasks.forEach((mask, index) => {
 }`,
     },
     "10": {
-      title: "흐르는 배너",
+      title: "흐르는 배너(수정 필요)",
       type: "HTML",
       code: `<div class="flowContainer">
   <ul class="flowBanner">
+    <!-- 동일 이미지 2개 이상 사용해야 연속된 애니메이션 효과 -->
     <li><img src="./" alt="" /></li>
     <li><img src="./" alt="" /></li>
   </ul>
@@ -201,29 +202,30 @@ swiperMasks.forEach((mask, index) => {
     "11": {
       title: "",
       type: "CSS",
-      code: `.flowBanner {
+      code: `.flowContainer {
+  position: relative;
+}
+.flowBanner {
   display: flex;
   width: max-content;
-  animation: flow 10s linear infinite;
+  animation: flowR 10s linear infinite;
+  /* gap: 20px; */
 }
-
 .flowBanner li {
   flex: 0 0 auto;
 }
-
 .flowBanner img {
   /* 이미지의 가로값 계산 */
   max-width: clamp(810px, 216vw, 1620px);
 }
-
-@keyframes flow {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}`,
+@keyframes flowR {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+/* @keyframes flowL {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0%); }
+} */`,
     },
     "12": {
       title: "특정 시간 예약 걸기",
@@ -307,6 +309,92 @@ checkSchedules();
       type: "CSS",
       code: `.open {display: block;}
 .delete {display: none;}`,
+    },
+    "15": {
+      title: "Swiper Pagination Custom (테스트 예정)",
+      type: "JS",
+      code: `pagination: {
+  el: \`.basic .swiper\${index} .swiper-pagination\`,
+  type: "fraction",
+  formatFractionCurrent: function (number) {
+    return number < 10 ? "0" + number : number;
+  },
+  formatFractionTotal: function (number) {
+    return number < 10 ? "0" + number : number;
+  },
+  renderFraction: function (currentClass, totalClass) {
+    return \`<div class="fraction">
+  <span class="\${currentClass}"></span>
+  <span class="swiper-pagination-dash"> / </span>
+  <span class="\${totalClass}"></span>
+</div>\`;
+  },
+},`,
+    },
+    "16": {
+      title: "",
+      type: "CSS",
+      code: `.swiper-pagination-current {
+  font-size: clamp(13px, 3.4666vw, 26px);
+  font-weight: 600;
+}
+.swiper-pagination-dash {
+  font-size: clamp(12px, 3.2vw, 24px);
+  font-weight: 500;
+}
+.swiper-pagination-total {
+  font-size: clamp(10px, 2.6666vw, 20px);
+  font-weight: 500;
+}`,
+    },
+    "17": {
+      title: "노르디스크 수퍼위크",
+      type: "HTML",
+      code: `<div class="img-box">
+<img src="./images/top_img.jpg" alt="노르디스크 수퍼위크" />
+<!-- auto-swiper -->
+<div class="top-banner-swiper">
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="./images/slide/top/1.png" />
+      </div>
+      <div class="swiper-slide">
+        <img src="./images/slide/top/2.png" />
+      </div>
+      <div class="swiper-slide">
+        <img src="./images/slide/top/3.png" />
+      </div>
+      <div class="swiper-slide">
+        <img src="./images/slide/top/1.png" />
+      </div>
+      <div class="swiper-slide">
+        <img src="./images/slide/top/2.png" />
+      </div>
+      <div class="swiper-slide">
+        <img src="./images/slide/top/3.png" />
+      </div>
+    </div>
+  </div>
+</div>
+</div>`,
+    },
+    "18": {
+      title: "",
+      type: "JS",
+      code: `const collectionSwiper = new Swiper(".top-banner-swiper .swiper", {
+  observer: true,
+  observeParents: true,
+  speed: 1500,
+  loop: true,
+  autoplay: {
+    delay: 1000,
+    disableOnInteraction: false,
+  },
+  spaceBetween: parseInt($(window).width() * 0),
+  centeredSlides: true,
+  slidesPerView: 1.5,
+});`,
     },
     /* 기본 형식
     "": {

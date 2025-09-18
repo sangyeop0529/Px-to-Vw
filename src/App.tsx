@@ -3,12 +3,15 @@ import PxToVw from "./components/PxToVw";
 import styled from "styled-components";
 import { codeExamples } from "./codes/codeExamples";
 import TitleSec from "./components/Title";
+import MoveToLink from "./components/MoveToLink";
 
 const allExamples = [...Object.values(codeExamples.Sample)];
 
 function App() {
   return (
     <Container>
+      <TitleSec title={"링크연결"} />
+      <MoveToLink />
       <TitleSec title={"Px to Vw"} />
       <PxToVw />
       <TitleSec title={"Code Sample"} />

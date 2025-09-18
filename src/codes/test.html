@@ -4,9 +4,49 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style></style>
+    <style>
+      .flowContainer {
+        position: relative;
+      }
+      .flowBanner {
+        display: flex;
+        width: max-content;
+        animation: flowR 10s linear infinite;
+        /* gap: 20px; */
+      }
+      .flowBanner li {
+        flex: 0 0 auto;
+      }
+      .flowBanner img {
+        /* 이미지의 가로값 계산 */
+        max-width: clamp(810px, 216vw, 1620px);
+      }
+      @keyframes flowR {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+      /* @keyframes flowL {
+        from {
+          transform: translateX(-50%);
+        }
+        to {
+          transform: translateX(0%);
+        }
+      } */
+    </style>
   </head>
   <body>
+    <div class="flowContainer">
+      <ul class="flowBanner">
+        <!-- 동일 이미지 2개 이상 사용해야 연속된 애니메이션 효과 -->
+        <li><img src="./" alt="" /></li>
+        <li><img src="./" alt="" /></li>
+      </ul>
+    </div>
     <script>
       // swiper 반복문 [S]
       const swiperObj1 = {};
@@ -26,6 +66,23 @@
               crossFade: true,
             },
             speed: 2000,
+            pagination: {
+              el: `.tabBox .swiper${index} .swiper-pagination`,
+              type: "fraction",
+              formatFractionCurrent: function (number) {
+                return number < 10 ? "0" + number : number;
+              },
+              formatFractionTotal: function (number) {
+                return number < 10 ? "0" + number : number;
+              },
+              renderFraction: function (currentClass, totalClass) {
+                return `<div class="fraction">
+              <span class="${currentClass}"></span>
+              <span class="swiper-pagination-dash"> / </span>
+              <span class="${totalClass}"></span>
+            </div>`;
+              },
+            },
             autoplay: {
               delay: 1500,
               disableOnInteraction: false,
