@@ -60,7 +60,7 @@ const MoveToLink = () => {
           value={input}
           onChange={onchangeInput}
           type="text"
-          size={40}
+          size={30}
         />
         <FlexBox>
           <Button onClick={onClickMoveMob}>mobile 열기</Button>

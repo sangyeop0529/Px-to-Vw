@@ -9,13 +9,17 @@ type CodeCopyProps = {
   title: string;
   type: string;
   code: string;
+  allOpen: boolean;
 };
 
-const CodeCopy = ({ id, title, type, code }: CodeCopyProps) => {
+const CodeCopy = ({ id, title, type, code, allOpen }: CodeCopyProps) => {
   const storageKey = `code-copy-${id}`;
   const [isOpen, setIsOpen] = useState(false);
+  const codeRef = useRef<HTMLDivElement>(null);
 
-  const codeRef = useRef(null);
+  useEffect(() => {
+    setIsOpen(allOpen);
+  }, [allOpen]);
 
   useEffect(() => {
     if (isOpen && codeRef.current) {

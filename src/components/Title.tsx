@@ -12,6 +12,6 @@ export default TitleSec;
 
 const Title = styled.h2`
   font-weight: bold;
-  font-size: 32px;
+  font-size: 24px;
   margin-bottom: 1.5rem;
 `;
