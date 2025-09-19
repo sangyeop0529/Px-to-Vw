@@ -17,7 +17,7 @@ const TAB_LIST = [
 
 function App() {
   const [allOpen, setAllOpen] = useState(true);
-  const [activeTab, setActiveTab] = useState("img");
+  const [activeTab, setActiveTab] = useState("vw");
 
   const toggleAll = () => setAllOpen((prev) => !prev);
 
