@@ -9,21 +9,51 @@ import PlaceholderImg from "./components/PlaceholderImg";
 
 const allExamples = codeExamples.Sample;
 
+const TAB_LIST = [
+  { key: "vw", label: "Px to Vw" },
+  { key: "link", label: "링크연결" },
+  { key: "img", label: "임시이미지" },
+];
+
 function App() {
   const [allOpen, setAllOpen] = useState(true);
+  const [activeTab, setActiveTab] = useState("img");
 
   const toggleAll = () => setAllOpen((prev) => !prev);
 
   return (
     <Container>
-      <TitleSec title={"임시이미지"} />
-      <PlaceholderImg />
+      <TabBox>
+        {TAB_LIST.map((tab) => (
+          <TabBtn
+            key={tab.key}
+            active={activeTab === tab.key}
+            onClick={() => setActiveTab(tab.key)}>
+            {tab.label}
+          </TabBtn>
+        ))}
+      </TabBox>
 
-      <TitleSec title={"링크연결"} />
-      <MoveToLink />
-
-      <TitleSec title={"Px to Vw"} />
-      <PxToVw />
+      <TabPanel>
+        {activeTab === "vw" && (
+          <>
+            <TitleSec title={"Px to Vw"} />
+            <PxToVw />
+          </>
+        )}
+        {activeTab === "img" && (
+          <>
+            <TitleSec title={"임시이미지"} />
+            <PlaceholderImg />
+          </>
+        )}
+        {activeTab === "link" && (
+          <>
+            <TitleSec title={"링크연결"} />
+            <MoveToLink />
+          </>
+        )}
+      </TabPanel>
 
       <TitleSec title={"Code Sample"} />
       <FlexBox>
@@ -57,6 +87,28 @@ const Container = styled.div`
   background-color: #eee;
   margin: 0 auto;
   padding: 4rem;
+`;
+const TabBox = styled.div`
+  display: flex;
+  gap: 0.2rem;
+`;
+const TabBtn = styled.button<{ active: boolean }>`
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 4px 4px 0 0;
+  background: ${({ active }) => (active ? "#fff" : "#ccc")};
+  color: ${({ active }) => (active ? "#222" : "#666")};
+  font-weight: ${({ active }) => (active ? "bold" : "normal")};
+  cursor: pointer;
+  outline: none;
+  border-bottom: ${({ active }) => (active ? "2px solid #4caf50" : "none")};
+`;
+const TabPanel = styled.div`
+  background: #fff;
+  border-radius: 0 0 8px 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  min-height: 180px;
 `;
 const FlexBox = styled.div`
   display: flex;
