@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import styled from "styled-components";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -7,6 +7,11 @@ const PlaceholderImg = () => {
   const [height, setHeight] = useState("1000");
   const [bgColor, setBgColor] = useState("000");
   const [textColor, setTextColor] = useState("fff");
+
+  const widthRef = useRef<HTMLInputElement>(null);
+  const heightRef = useRef<HTMLInputElement>(null);
+  const bgColorRef = useRef<HTMLInputElement>(null);
+  const textColorRef = useRef<HTMLInputElement>(null);
 
   // 공통 URL 생성
   const placeholderUrl = `https://placehold.co/${width}x${height}/${bgColor}/${textColor}`;
@@ -18,6 +23,27 @@ const PlaceholderImg = () => {
     };
 
   const onClickBtn = async () => {
+    if (!width) {
+      toast.error("가로값을 입력해주세요!");
+      widthRef.current?.focus();
+      return;
+    }
+    if (!height) {
+      toast.error("높이값을 입력해주세요!");
+      heightRef.current?.focus();
+      return;
+    }
+    if (!bgColor) {
+      toast.error("배경색을 입력해주세요!");
+      bgColorRef.current?.focus();
+      return;
+    }
+    if (!textColor) {
+      toast.error("글자색을 입력해주세요!");
+      textColorRef.current?.focus();
+      return;
+    }
+
     try {
       await navigator.clipboard.writeText(
         `<img src="${placeholderUrl}" alt="임시코드" />`
@@ -35,19 +61,28 @@ const PlaceholderImg = () => {
       <FlexBox>
         <Label>
           가로값 :
-          <Input type="text" value={width} onChange={handleChange(setWidth)} />
+          <Input
+            ref={widthRef}
+            type="text"
+            value={width}
+            onChange={handleChange(setWidth)}
+            required
+          />
         </Label>
         <Label>
           높이값 :
           <Input
+            ref={heightRef}
             type="text"
             value={height}
             onChange={handleChange(setHeight)}
+            required
           />
         </Label>
         <Label>
           배경색 :
           <Input
+            ref={bgColorRef}
             type="text"
             value={bgColor}
             onChange={handleChange(setBgColor)}
@@ -56,6 +91,7 @@ const PlaceholderImg = () => {
         <Label>
           글자색 :
           <Input
+            ref={bgColorRef}
             type="text"
             value={textColor}
             onChange={handleChange(setTextColor)}
