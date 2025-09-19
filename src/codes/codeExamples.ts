@@ -373,42 +373,67 @@ checkSchedules();
     ],
     [
       {
-        id: "pagination-custom-1",
-        title: "Swiper Pagination Custom (테스트 필요)",
-        type: "JS",
-        code: `pagination: {
-  el: \`.basic .swiper\${index} .swiper-pagination\`,
-  type: "fraction",
-  formatFractionCurrent: function (number) {
-    return number < 10 ? "0" + number : number;
-  },
-  formatFractionTotal: function (number) {
-    return number < 10 ? "0" + number : number;
-  },
-  renderFraction: function (currentClass, totalClass) {
-    return \`<div class="fraction">
-  <span class="\${currentClass}"></span>
-  <span class="swiper-pagination-dash"> / </span>
-  <span class="\${totalClass}"></span>
-</div>\`;
-  },
-},`,
+        id: "pagination-fraction-1",
+        title: "Swiper Pagination fraction",
+        type: "HTML",
+        code: `<div class="basic">
+  <div class="swiper-mask swiper1">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="./images/" />
+        </div>
+      </div>
+      <div class="fraction-pagination"></div>
+    </div>
+  </div>
+</div>`,
       },
       {
-        id: "pagination-custom-2",
+        id: "pagination-fraction-2",
+        title: "",
+        type: "JS",
+        code: `// swiper 반복문 [S]
+const swiperObj1 = {};
+const swiperMasks = document.querySelectorAll(".basic .swiper-mask");
+const fractionEl = document.querySelector(".fraction-pagination");
+
+swiperMasks.forEach((mask, index) => {
+  const swiperIndex = index + 1;
+  swiperObj1[\`swiper\${swiperIndex}\`] = new Swiper(
+    \`.basic .swiper\${swiperIndex} .swiper\`,
+    {
+      observer: true,
+      observeParents: true,
+      slidesPerView: 1,
+      spaceBetween: Math.floor(window.innerWidth * 0.0),
+      on: {
+        init: function () {
+          updateFraction(this, fractionEl);
+        },
+        slideChange: function () {
+          updateFraction(this, fractionEl);
+        },
+      },
+    }
+  );
+});
+function updateFraction(swiper, fractionEl) {
+  if (!fractionEl) return;
+  const current = swiper.realIndex + 1;
+  const total = swiper.slides.length;
+  fractionEl.innerHTML = \`<img src="./images/fraction/\${current}.png" alt="\${current}/\${total}" />\`;
+}
+// swiper 반복문 [E]`,
+      },
+      {
+        id: "pagination-fraction-3",
         title: "",
         type: "CSS",
-        code: `.swiper-pagination-current {
-  font-size: clamp(13px, 3.4666vw, 26px);
-  font-weight: 600;
-}
-.swiper-pagination-dash {
-  font-size: clamp(12px, 3.2vw, 24px);
-  font-weight: 500;
-}
-.swiper-pagination-total {
-  font-size: clamp(10px, 2.6666vw, 20px);
-  font-weight: 500;
+        code: `.fraction-pagination {
+  width: clamp(27.5px, 7.3333vw, 55px);
+  margin: 0 auto;
+  margin-top: 8vw;
 }`,
       },
     ],
