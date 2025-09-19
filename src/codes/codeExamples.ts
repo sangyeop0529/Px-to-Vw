@@ -265,22 +265,71 @@ swiperMasks.forEach((mask, index) => {
     ],
     [
       {
-        id: "flow-banner-1",
-        title: "흐르는 배너(작업중)",
+        id: "flow-banner-swiper-1",
+        title: "흐르는 배너(swiper)",
         type: "HTML",
-        code: ``,
+        code: `<div class="flow">
+  <div class="swiper-mask swiper1">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img
+            src="https://placehold.co/1640x280/000/fff"
+            alt="임시코드" />
+        </div>
+        <div class="swiper-slide">
+          <img
+            src="https://placehold.co/1640x280/000/fff"
+            alt="임시코드" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`,
       },
       {
-        id: "flow-banner-2",
-        title: "",
-        type: "CSS",
-        code: ``,
-      },
-      {
-        id: "flow-banner-3",
+        id: "flow-banner-swiper-2",
         title: "",
         type: "JS",
-        code: ``,
+        code: `const swiperObj1 = {};
+const swiperMasks1 = document.querySelectorAll(".flow .swiper-mask");
+
+swiperMasks1.forEach((mask, index) => {
+  const swiperIndex = index + 1;
+  swiperObj1[\`swiper\${swiperIndex}\`] = new Swiper(
+    \`.flow .swiper\${swiperIndex} .swiper\`,
+    {
+      slidesPerView: "auto",
+      spaceBetween: -1,
+      autoplay: {
+        delay: 0,
+        disableOnInteraction: false,
+        reverseDirection: false, // 방향
+      },
+      loop: true,
+      speed: 20000,
+      observer: true,
+      observeParents: true,
+      mousewheel: false,
+      simulateTouch: false,
+      pauseOnMouseEnter: false,
+      allowTouchMove: false,
+      grabCursor: false,
+    }
+  );
+});`,
+      },
+      {
+        id: "flow-banner-swiper-3",
+        title: "",
+        type: "CSS",
+        code: `.flow .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+.flow .swiper-wrapper .swiper-slide {
+  /* 이미지의 가로값 계산 */
+  width: clamp(820px, 218.6666vw, 1640px);
+}`,
       },
     ],
     [
