@@ -53,7 +53,7 @@ const MoveToLink = () => {
   return (
     <Wrapper>
       <Caution>
-        <span>*</span>링크를 입력해주세요.
+        <span>*</span>기타 URL 링크를 입력해주세요.
       </Caution>
       <FlexBox>
         <UrlInput
