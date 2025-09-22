@@ -20,6 +20,14 @@ function App() {
   const [activeTab, setActiveTab] = useState("vw");
 
   const toggleAll = () => setAllOpen((prev) => !prev);
+  const [search, setSearch] = useState("");
+  const filteredExamples = allExamples.map((group) =>
+    group.filter(
+      (example) =>
+        example.title.toLowerCase().includes(search.toLowerCase()) ||
+        example.code.toLowerCase().includes(search.toLowerCase())
+    )
+  );
 
   return (
     <Container>
@@ -27,7 +35,7 @@ function App() {
         {TAB_LIST.map((tab) => (
           <TabBtn
             key={tab.key}
-            active={activeTab === tab.key}
+            $active={activeTab === tab.key}
             onClick={() => setActiveTab(tab.key)}>
             {tab.label}
           </TabBtn>
@@ -55,27 +63,36 @@ function App() {
         )}
       </TabPanel>
 
-      <TitleSec title={"Code Sample"} />
-      <FlexBox>
-        <AllBtn onClick={toggleAll}>
-          {allOpen ? "전체 닫기" : "전체 열기"}
-        </AllBtn>
-      </FlexBox>
+      <TitleSec title={"Code Sample"}>
+        <TitleInContent>
+          <FilterInput
+            type="text"
+            placeholder="코드 검색..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <AllBtn onClick={toggleAll}>
+            {allOpen ? "전체 닫기" : "전체 열기"}
+          </AllBtn>
+        </TitleInContent>
+      </TitleSec>
 
-      {allExamples.map((group, groupIdx) => (
-        <div key={groupIdx} className="example-group">
-          {group.map((example) => (
-            <CodeCopy
-              key={example.id}
-              id={example.id}
-              title={example.title}
-              type={example.type}
-              code={example.code}
-              allOpen={allOpen}
-            />
-          ))}
-        </div>
-      ))}
+      {filteredExamples
+        .filter((group) => group.length > 0)
+        .map((group, groupIdx) => (
+          <div key={groupIdx} className="example-group">
+            {group.map((example) => (
+              <CodeCopy
+                key={example.id}
+                id={example.id}
+                title={example.title}
+                type={example.type}
+                code={example.code}
+                allOpen={allOpen}
+              />
+            ))}
+          </div>
+        ))}
     </Container>
   );
 }
@@ -92,17 +109,18 @@ const TabBox = styled.div`
   display: flex;
   gap: 0.2rem;
 `;
-const TabBtn = styled.button<{ active: boolean }>`
+const TabBtn = styled.button<{ $active: boolean }>`
   padding: 0.6rem 1.2rem;
   border: none;
   border-radius: 4px 4px 0 0;
-  background: ${({ active }) => (active ? "#fff" : "#ccc")};
-  color: ${({ active }) => (active ? "#222" : "#666")};
-  font-weight: ${({ active }) => (active ? "bold" : "normal")};
+  background: ${({ $active }) => ($active ? "#fff" : "#ccc")};
+  color: ${({ $active }) => ($active ? "#222" : "#666")};
+  font-weight: ${({ $active }) => ($active ? "bold" : "normal")};
   cursor: pointer;
   outline: none;
-  border-bottom: ${({ active }) => (active ? "2px solid #4caf50" : "none")};
+  border-bottom: ${({ $active }) => ($active ? "2px solid #4caf50" : "none")};
 `;
+
 const TabPanel = styled.div`
   background: #fff;
   border-radius: 0 0 8px 8px;
@@ -110,20 +128,26 @@ const TabPanel = styled.div`
   margin-bottom: 2rem;
   min-height: 180px;
 `;
-const FlexBox = styled.div`
+const TitleInContent = styled.div`
   display: flex;
-  justify-content: flex-end;
-  margin-top: -3.5rem;
+  align-items: center;
   margin-bottom: 1.5rem;
+  gap: 0.5rem;
+`;
+const FilterInput = styled.input`
+  padding-left: 0.5rem;
+  height: 100%;
 `;
 const AllBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0.4rem 0.8rem;
-  background-color: #4caf50;
-  color: #fff;
+  background-color: rgb(76, 175, 80);
+  color: rgb(255, 255, 255);
   border: none;
   height: 100%;
   border-radius: 4px;
+
+  cursor: pointer;
 `;

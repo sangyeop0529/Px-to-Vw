@@ -48,13 +48,13 @@ const CodeCopy = ({ id, title, type, code, allOpen }: CodeCopyProps) => {
     if (code && code.trim() !== "") {
       try {
         await navigator.clipboard.writeText(code);
-        toast(`클립보드에 복사됨`);
+        toast("클립보드에 복사됨");
       } catch (err) {
-        toast.error("클립보드 복사 실패!");
         console.error(err);
+        toast.error("클립보드 복사 실패!");
       }
     } else {
-      toast.error("복사할 내용이 없습니다!");
+      toast.warn("복사할 코드가 없습니다");
     }
   };
 

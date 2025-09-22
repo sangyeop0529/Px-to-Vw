@@ -117,6 +117,7 @@ const Vw = styled.button`
   border: none;
   height: 100%;
   border-radius: 4px;
+  cursor: pointer;
 `;
 
 export default PxToVw;
