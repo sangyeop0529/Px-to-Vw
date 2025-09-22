@@ -2,58 +2,6 @@ export const codeExamples = {
   Sample: [
     [
       {
-        id: "super-week-1",
-        title: "노르디스크 수퍼위크 (기간한정)",
-        type: "HTML",
-        code: `<div class="img-box">
-  <img src="./images/top_img.jpg" alt="노르디스크 수퍼위크" />
-  <div class="top-banner-swiper">
-    <div class="swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="./images/slide/top/1.png" />
-        </div>
-        <div class="swiper-slide">
-          <img src="./images/slide/top/2.png" />
-        </div>
-        <div class="swiper-slide">
-          <img src="./images/slide/top/3.png" />
-        </div>
-        <div class="swiper-slide">
-          <img src="./images/slide/top/1.png" />
-        </div>
-        <div class="swiper-slide">
-          <img src="./images/slide/top/2.png" />
-        </div>
-        <div class="swiper-slide">
-          <img src="./images/slide/top/3.png" />
-        </div>
-      </div>
-    </div>
-  </div>
-</div>`,
-      },
-      {
-        id: "super-week-2",
-        title: "",
-        type: "JS",
-        code: `const collectionSwiper = new Swiper(".top-banner-swiper .swiper", {
-  observer: true,
-  observeParents: true,
-  speed: 1500,
-  loop: true,
-  autoplay: {
-    delay: 1000,
-    disableOnInteraction: false,
-  },
-  spaceBetween: parseInt($(window).width() * 0),
-  centeredSlides: true,
-  slidesPerView: 1.5,
-});`,
-      },
-    ],
-    [
-      {
         id: "basic-1",
         title: "기본형",
         type: "HTML",
@@ -484,6 +432,58 @@ function updateFraction(swiper, fractionEl) {
   margin: 0 auto;
   margin-top: 8vw;
 }`,
+      },
+    ],
+    [
+      {
+        id: "super-week-1",
+        title: "노르디스크 수퍼위크 (기간한정)",
+        type: "HTML",
+        code: `<div class="img-box">
+  <img src="./images/top_img.jpg" alt="노르디스크 수퍼위크" />
+  <div class="top-banner-swiper">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="./images/slide/top/1.png" />
+        </div>
+        <div class="swiper-slide">
+          <img src="./images/slide/top/2.png" />
+        </div>
+        <div class="swiper-slide">
+          <img src="./images/slide/top/3.png" />
+        </div>
+        <div class="swiper-slide">
+          <img src="./images/slide/top/1.png" />
+        </div>
+        <div class="swiper-slide">
+          <img src="./images/slide/top/2.png" />
+        </div>
+        <div class="swiper-slide">
+          <img src="./images/slide/top/3.png" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`,
+      },
+      {
+        id: "super-week-2",
+        title: "",
+        type: "JS",
+        code: `const collectionSwiper = new Swiper(".top-banner-swiper .swiper", {
+  observer: true,
+  observeParents: true,
+  speed: 1500,
+  loop: true,
+  autoplay: {
+    delay: 1000,
+    disableOnInteraction: false,
+  },
+  spaceBetween: parseInt($(window).width() * 0),
+  centeredSlides: true,
+  slidesPerView: 1.5,
+});`,
       },
     ],
     /*
