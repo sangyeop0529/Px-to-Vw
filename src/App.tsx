@@ -21,12 +21,15 @@ function App() {
 
   const toggleAll = () => setAllOpen((prev) => !prev);
   const [search, setSearch] = useState("");
-  const filteredExamples = allExamples.map((group) =>
-    group.filter(
-      (example) =>
-        example.title.toLowerCase().includes(search.toLowerCase()) ||
-        example.code.toLowerCase().includes(search.toLowerCase())
-    )
+
+  const filteredExamples = allExamples.filter((group) =>
+    group.some((example) => {
+      const lowerSearch = search.toLowerCase();
+      return (
+        (example.title && example.title.toLowerCase().includes(lowerSearch)) ||
+        (example.code && example.code.toLowerCase().includes(lowerSearch))
+      );
+    })
   );
 
   return (
@@ -77,22 +80,20 @@ function App() {
         </TitleInContent>
       </TitleSec>
 
-      {filteredExamples
-        .filter((group) => group.length > 0)
-        .map((group, groupIdx) => (
-          <div key={groupIdx} className="example-group">
-            {group.map((example) => (
-              <CodeCopy
-                key={example.id}
-                id={example.id}
-                title={example.title}
-                type={example.type}
-                code={example.code}
-                allOpen={allOpen}
-              />
-            ))}
-          </div>
-        ))}
+      {filteredExamples.map((group, groupIdx) => (
+        <div key={groupIdx} className="example-group">
+          {group.map((example) => (
+            <CodeCopy
+              key={example.id}
+              id={example.id}
+              title={example.title}
+              type={example.type}
+              code={example.code}
+              allOpen={allOpen}
+            />
+          ))}
+        </div>
+      ))}
     </Container>
   );
 }
