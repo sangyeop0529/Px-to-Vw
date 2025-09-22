@@ -445,7 +445,7 @@ checkSchedules();
         code: `// swiper 반복문 [S]
 const swiperObj1 = {};
 const swiperMasks = document.querySelectorAll(".basic .swiper-mask");
-const fractionEl = document.querySelector(".fraction-pagination");
+const fractionEl = document.querySelectorAll(".fraction-pagination");
 
 swiperMasks.forEach((mask, index) => {
   const swiperIndex = index + 1;
@@ -458,10 +458,10 @@ swiperMasks.forEach((mask, index) => {
       spaceBetween: Math.floor(window.innerWidth * 0.0),
       on: {
         init: function () {
-          updateFraction(this, fractionEl);
+          updateFraction(this, fractionEl[index]);
         },
         slideChange: function () {
-          updateFraction(this, fractionEl);
+          updateFraction(this, fractionEl[index]);
         },
       },
     }
