@@ -6,6 +6,7 @@ import TitleSec from "./components/Title";
 import MoveToLink from "./components/MoveToLink";
 import { useState } from "react";
 import PlaceholderImg from "./components/PlaceholderImg";
+import Download from "./components/Download";
 
 const allExamples = codeExamples.Sample;
 
@@ -13,6 +14,7 @@ const TAB_LIST = [
   { key: "vw", label: "Px to Vw" },
   { key: "link", label: "링크연결" },
   { key: "img", label: "임시이미지" },
+  { key: "down", label: "다운로드" },
 ];
 
 function App() {
@@ -62,6 +64,12 @@ function App() {
           <>
             <TitleSec title={"링크연결"} />
             <MoveToLink />
+          </>
+        )}
+        {activeTab === "down" && (
+          <>
+            <TitleSec title={"다운로드"} />
+            <Download />
           </>
         )}
       </TabPanel>
