@@ -15,7 +15,7 @@ export const codeExamples = {
         id: "button-1",
         title: "버튼형",
         type: "HTML",
-        code: `<div class="sec01">
+        code: `<div class="">
   <img src="./images/" alt="입력해주세요" />
   <img src="./images/.jpg" class="kioskDel" />
   <a href="#" id="link0" data-order="0" class="link-btn kioskDel">
@@ -31,7 +31,6 @@ export const codeExamples = {
         title: "Swiper 기본형",
         type: "HTML",
         code: `<div class="basic">
-  <img src="./images/" alt="입력해주세요" />
   <div class="swiper-mask swiper1">
     <div class="swiper">
       <div class="swiper-wrapper">
@@ -429,6 +428,7 @@ function updateFraction(swiper, fractionEl) {
         type: "CSS",
         code: `.fraction-pagination {
   width: clamp(27.5px, 7.3333vw, 55px);
+  height: clamp(15px, 4vw, 30px);
   margin: 0 auto;
   margin-top: 8vw;
 }`,

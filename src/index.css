@@ -6,6 +6,9 @@
 
 .btn-group {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
 }
 .code-block {
   border-radius: 8px;
