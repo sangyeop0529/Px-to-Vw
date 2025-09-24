@@ -7,6 +7,7 @@ import MoveToLink from "./components/MoveToLink";
 import { useState } from "react";
 import PlaceholderImg from "./components/PlaceholderImg";
 import Download from "./components/Download";
+import Memo from "./components/Memo";
 
 const allExamples = codeExamples.Sample;
 
@@ -15,6 +16,7 @@ const TAB_LIST = [
   { key: "link", label: "링크연결" },
   { key: "img", label: "임시이미지" },
   { key: "down", label: "다운로드" },
+  { key: "memo", label: "메모장" },
 ];
 
 function App() {
@@ -70,6 +72,12 @@ function App() {
           <>
             <TitleSec title={"다운로드"} />
             <Download />
+          </>
+        )}
+        {activeTab === "memo" && (
+          <>
+            <TitleSec title={"메모장"} />
+            <Memo />
           </>
         )}
       </TabPanel>
