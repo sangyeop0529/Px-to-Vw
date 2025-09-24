@@ -28,6 +28,8 @@ const Memo = () => {
 
   // 글삭제
   const deleteMemo = async (id: string) => {
+    const confirmDelete = window.confirm("삭제 하시겠습니까?");
+    if (!confirmDelete) return; // 취소하면 함수 종료
     const { error } = await supabase.from("memos").delete().eq("id", id);
     if (!error) fetchMemos();
   };
