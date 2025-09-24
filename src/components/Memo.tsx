@@ -84,6 +84,22 @@ const BoardItem = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 0;
+  padding: 1rem 0;
   border-bottom: 1px solid #eee;
+
+  p {
+    white-space: pre-wrap;
+  }
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.875rem 1rem;
+    background-color: #d1d1d1;
+    color: #fff;
+    border: none;
+    height: 100%;
+    border-radius: 4px;
+    cursor: pointer;
+  }
 `;
