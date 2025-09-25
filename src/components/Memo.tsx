@@ -51,7 +51,14 @@ const Memo = () => {
       <BoardArea>
         {memos.map((memo) => (
           <BoardItem key={memo.id}>
-            <p>{memo.content}</p>
+            <p>
+              {memo.content.split("\n").map((line: string, idx: number) => (
+                <span key={idx}>
+                  {line}
+                  <br />
+                </span>
+              ))}
+            </p>
             <button onClick={() => deleteMemo(memo.id)}>삭제</button>
           </BoardItem>
         ))}
@@ -87,9 +94,6 @@ const BoardItem = styled.div`
   padding: 1rem 0;
   border-bottom: 1px solid #eee;
 
-  p {
-    white-space: pre-wrap;
-  }
   button {
     display: flex;
     justify-content: center;
