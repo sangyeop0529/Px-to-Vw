@@ -14,21 +14,45 @@
     </style>
   </head>
   <body>
-    <div class="basic">
+    <div class="flow">
       <div class="swiper-mask swiper1">
         <div class="swiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
-              <img src="./images/" />
+              <img src="./images/" alt="" />
+            </div>
+            <div class="swiper-slide">
+              <img src="./images/" alt="" />
             </div>
           </div>
-          <div class="swiper-pagination"></div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-          <div class="swiper-scrollbar"></div>
         </div>
       </div>
     </div>
-    <script></script>
+
+    <script>
+      const swiperObj1 = {};
+      const swiperFlowMasks = document.querySelectorAll(".flow .swiper-mask");
+
+      swiperFlowMasks.forEach((mask, index) => {
+        const swiperIndex = index + 1;
+        swiperObj1[`swiper${swiperIndex}`] = new Swiper(
+          `.flow .swiper${swiperIndex} .swiper`,
+          {
+            slidesPerView: "auto",
+            spaceBetween: Math.floor(window.innerWidth * 0.0),
+            autoplay: {
+              delay: 0,
+              disableOnInteraction: false,
+              reverseDirection: false, // 방향
+            },
+            loop: true,
+            speed: 20000,
+            observer: true,
+            observeParents: true,
+            allowTouchMove: false,
+          }
+        );
+      });
+    </script>
   </body>
 </html>

@@ -5,9 +5,7 @@ export const codeExamples = {
         id: "basic-1",
         title: "기본형",
         type: "HTML",
-        code: `<div class="">
-  <img src="./images/" alt="입력해주세요." />
-</div>`,
+        code: `<img src="./images/" alt="" />`,
       },
     ],
     [
@@ -15,14 +13,12 @@ export const codeExamples = {
         id: "button-1",
         title: "버튼형",
         type: "HTML",
-        code: `<div class="">
-  <img src="./images/" alt="입력해주세요" />
-  <img src="./images/.jpg" class="kioskDel" />
-  <a href="#" id="link0" data-order="0" class="link-btn kioskDel">
-    <img src="./images/" />
-  </a>
-  <img src="./images/" />
-</div>`,
+        code: `<img src="./images/" alt="" />
+<img src="./images/" class="kioskDel" />
+<a href="#" id="link0" data-order="0" class="link-btn kioskDel">
+  <img src="./images/" alt="" />
+</a>
+<img src="./images/" alt="" />`,
       },
     ],
     [
@@ -35,7 +31,7 @@ export const codeExamples = {
     <div class="swiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <img src="./images/" />
+          <img src="./images/" alt="" />
         </div>
       </div>
       <div class="swiper-pagination"></div>
@@ -167,15 +163,13 @@ swiperMasks.forEach((mask, index) => {
         id: "toggle-box-1",
         title: "토글 박스형",
         type: "HTML",
-        code: `<div class="">
-  <div class="toggle-box">
-    <div class="toggle-box__btns">
-      <img src="./images/toggle_on.jpg" />
-      <img src="./images/toggle_off.jpg" />
-    </div>
-    <div class="toggle-box__con">
-      <img src="./images/toggle_content.jpg" />
-    </div>
+        code: `<div class="toggle-box on">
+  <div class="toggle-box__btns">
+    <img src="./images/toggle_on.jpg" alt="" />
+    <img src="./images/toggle_off.jpg" alt="" />
+  </div>
+  <div class="toggle-box__con">
+    <img src="./images/" alt="" />
   </div>
 </div>`,
       },
@@ -186,9 +180,9 @@ swiperMasks.forEach((mask, index) => {
         title: "링크연결형",
         type: "HTML",
         code: `<div class="img-box">
-  <img src="./images/" alt="입력해주세요" />
+  <img src="./images/" alt="" />
   <span class="goto-link kioskDel">
-    <a href="tel:02-123-5678">입력해주세요</a>
+    <a href="tel:02-123-5678"></a>
   </span>
 </div>`,
       },
@@ -220,14 +214,10 @@ swiperMasks.forEach((mask, index) => {
     <div class="swiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <img
-            src="https://placehold.co/1640x280/000/fff"
-            alt="임시코드" />
+          <img src="./images/" alt="" />
         </div>
         <div class="swiper-slide">
-          <img
-            src="https://placehold.co/1640x280/000/fff"
-            alt="임시코드" />
+          <img src="./images/" alt="" />
         </div>
       </div>
     </div>
@@ -239,15 +229,15 @@ swiperMasks.forEach((mask, index) => {
         title: "",
         type: "JS",
         code: `const swiperObj1 = {};
-const swiperMasks1 = document.querySelectorAll(".flow .swiper-mask");
+const swiperFlowMasks = document.querySelectorAll(".flow .swiper-mask");
 
-swiperMasks1.forEach((mask, index) => {
+swiperFlowMasks.forEach((mask, index) => {
   const swiperIndex = index + 1;
   swiperObj1[\`swiper\${swiperIndex}\`] = new Swiper(
     \`.flow .swiper\${swiperIndex} .swiper\`,
     {
       slidesPerView: "auto",
-      spaceBetween: -1,
+      spaceBetween: Math.floor(window.innerWidth * 0.0),
       autoplay: {
         delay: 0,
         disableOnInteraction: false,
@@ -257,11 +247,7 @@ swiperMasks1.forEach((mask, index) => {
       speed: 20000,
       observer: true,
       observeParents: true,
-      mousewheel: false,
-      simulateTouch: false,
-      pauseOnMouseEnter: false,
       allowTouchMove: false,
-      grabCursor: false,
     }
   );
 });`,
@@ -377,7 +363,7 @@ checkSchedules();
     <div class="swiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <img src="./images/" />
+          <img src="./images/" alt="" />
         </div>
       </div>
       <div class="fraction-pagination"></div>
@@ -432,58 +418,6 @@ function updateFraction(swiper, fractionEl) {
   margin: 0 auto;
   margin-top: 8vw;
 }`,
-      },
-    ],
-    [
-      {
-        id: "super-week-1",
-        title: "노르디스크 수퍼위크 (기간한정)",
-        type: "HTML",
-        code: `<div class="img-box">
-  <img src="./images/top_img.jpg" alt="노르디스크 수퍼위크" />
-  <div class="top-banner-swiper">
-    <div class="swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="./images/slide/top/1.png" />
-        </div>
-        <div class="swiper-slide">
-          <img src="./images/slide/top/2.png" />
-        </div>
-        <div class="swiper-slide">
-          <img src="./images/slide/top/3.png" />
-        </div>
-        <div class="swiper-slide">
-          <img src="./images/slide/top/1.png" />
-        </div>
-        <div class="swiper-slide">
-          <img src="./images/slide/top/2.png" />
-        </div>
-        <div class="swiper-slide">
-          <img src="./images/slide/top/3.png" />
-        </div>
-      </div>
-    </div>
-  </div>
-</div>`,
-      },
-      {
-        id: "super-week-2",
-        title: "",
-        type: "JS",
-        code: `const collectionSwiper = new Swiper(".top-banner-swiper .swiper", {
-  observer: true,
-  observeParents: true,
-  speed: 1500,
-  loop: true,
-  autoplay: {
-    delay: 1000,
-    disableOnInteraction: false,
-  },
-  spaceBetween: parseInt($(window).width() * 0),
-  centeredSlides: true,
-  slidesPerView: 1.5,
-});`,
       },
     ],
     /*
